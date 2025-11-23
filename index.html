@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Over-The-Air Server</title>
+  <style>
+    /* Background with depth and soft color */
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(180,200,255,0.35), transparent 60%),
+        radial-gradient(1000px 500px at 90% 10%, rgba(255,210,230,0.35), transparent 60%),
+        linear-gradient(135deg, #cfd9ff 0%, #e9eef7 50%, #ffffff 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 2rem 1rem;
+      color: #111;
+    }
+
+    /* Ultra glass main container */
+    .glass-container {
+      width: 100%;
+      max-width: 760px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(42px) saturate(210%);
+      -webkit-backdrop-filter: blur(42px) saturate(210%);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      box-shadow:
+        inset 0 1px 18px rgba(255,255,255,0.35),
+        0 18px 50px rgba(30, 60, 120, 0.25);
+      padding: 22px;
+    }
+
+    header {
+      text-align: center;
+      font-weight: 800;
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      color: #0a84ff;
+      letter-spacing: 0.2px;
+      text-shadow: 0 2px 10px rgba(255,255,255,0.9);
+    }
+
+    /* Individual liquid glass cards */
+    .app-card {
+      margin: 14px 0;
+    }
+
+    .card-glass {
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.35), rgba(255,255,255,0.18)),
+        rgba(255,255,255,0.18);
+      backdrop-filter: blur(26px) saturate(190%);
+      -webkit-backdrop-filter: blur(26px) saturate(190%);
+      border: 1px solid rgba(255,255,255,0.55);
+      box-shadow:
+        inset 0 1px 10px rgba(255,255,255,0.6),
+        0 10px 28px rgba(50,100,180,0.18);
+      padding: 14px 16px;
+    }
+
+    .app-title {
+      font-weight: 700;
+      font-size: 1.06rem;
+      margin-bottom: 6px;
+      color: #0f1220;
+      text-shadow: 0 1px 3px rgba(255,255,255,0.7);
+    }
+
+    .app-meta {
+      font-size: 0.92rem;
+      color: #2b2f3a;
+      margin-bottom: 10px;
+      opacity: 0.9;
+    }
+
+    /* iOS-style animated button (glossy + interactive) */
+    .get-button {
+      display: inline-block;
+      padding: 0.68rem 1.5rem;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #ffffff;
+      background:
+        linear-gradient(160deg, rgba(10,132,255,0.98) 0%, rgba(10,132,255,0.85) 50%, rgba(10,132,255,0.75) 100%);
+      box-shadow:
+        0 8px 22px rgba(10,132,255,0.45),
+        inset 0 1px 6px rgba(255,255,255,0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform 180ms ease, box-shadow 220ms ease, filter 200ms ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Gloss sweep highlight */
+    .get-button::before {
+      content: "";
+      position: absolute;
+      top: -120%;
+      left: -60%;
+      width: 220%;
+      height: 240%;
+      background:
+        linear-gradient(30deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.25) 18%, transparent 36%),
+        radial-gradient(120px 60px at 40% 20%, rgba(255,255,255,0.5), transparent 60%);
+      transform: rotate(18deg);
+      opacity: 0;
+      transition: opacity 240ms ease;
+      pointer-events: none;
+    }
+
+    .get-button:hover::before { opacity: 1; }
+    .get-button:hover {
+      transform: translateY(-1px) scale(1.06);
+      box-shadow:
+        0 12px 28px rgba(10,132,255,0.55),
+        inset 0 1px 8px rgba(255,255,255,0.85);
+      filter: saturate(115%);
+    }
+
+    .get-button:active {
+      transform: translateY(0) scale(0.96);
+      box-shadow:
+        0 6px 16px rgba(10,132,255,0.6) inset,
+        0 4px 8px rgba(10,132,255,0.4);
+      filter: brightness(0.98) saturate(110%);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #2b2f3a;
+      margin-top: 1.4rem;
+      text-shadow: 0 1px 3px rgba(255,255,255,0.85);
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="glass-container">
+    <header>ESign Install By TP67</header>
+
+    <div class="app-card">
+      <div class="card-glass">
+        <div class="app-title">DNS Anti Revoke</div>
+        <div class="app-meta">Install Before Installing apps</div>
+        <a class="get-button" href="https://pagedrop.app/p/dnsnorevoke">Install</a>
+      </div>
+    </div>
+
+    <div class="app-card"><div class="card-glass"><div class="app-title">ESign</div><div class="app-meta">Etisalat Emirates</div><a class="get-button" href="https://api.khoindvn.eu.org/k1Ycos">GET</a></div></div>
+    <div class="app-card"><div class="card-glass"><div class="app-title">ESign</div><div class="app-meta">Heavy Duty Truck</div><a class="get-button" href="https://api.khoindvn.io.vn/jA06Dp">GET</a></div></div>
+    <div class="app-card"><div class="card-glass"><div class="app-title">ESign</div><div class="app-meta">Guangzhou Huahan</div><a class="get-button" href="https://api.khoindvn.io.vn/SUvkkC">GET</a></div></div>
+    <div class="app-card"><div class="card-glass"><div class="app-title">ESign</div><div class="app-meta">China Telecom</div><a class="get-button" href="https://api.khoindvn.io.vn/qylEe1">GET</a></div></div>
+    <div class="app-card"><div class="card-glass"><div class="app-title">ESign</div><div class="app-meta">Global Takeoff</div><a class="get-button" href="https://api.khoindvn.io.vn/yHH6NE">GET</a></div></div>
+    <div class="app-card"><div class="card-glass"><div class="app-title">ESign</div><div class="app-meta">Tianjin University</div><a class="get-button" href="https://api.khoindvn.io.vn/SXgmxb">GET</a></div></div>
+    <div class="app-card"><div class="card-glass"><div class="app-title">ESign</div><div class="app-meta">BMW Brilliance</div><a class="get-button" href="https://loadly.io/KDxT6fCO">GET</a></div></div>
+    <div class="app-card"><div class="card-glass"><div class="app-title">ESign</div><div class="app-meta">VIETNAM JOINT STOCK COMMERCIAL BANK FOR INDUSTRY AND TRADE</div><a class="get-button" href="https://api.khoindvn.io.vn/zkopYA">GET</a></div></div>
+    <div class="app-card"><div class="card-glass"><div class="app-title">ESign</div><div class="app-meta">Viet Telecom</div><a class="get-button" href="https://api.khoindvn.io.vn/KX3VBb">GET</a></div></div>
+    <div class="app-card"><div class="card-glass"><div class="app-title">ESign</div><div class="app-meta">Beijing Esensoft</div><a class="get-button" href="https://api.khoindvn.io.vn/rR9jpsC">GET</a></div></div>
+    <div class="app-card"><div class="card-glass"><div class="app-title">ESign</div><div class="app-meta">CHIBA INSTITUDE OF TECHNOLOGY</div><a class="get-button" href="https://api.khoindvn.io.vn/SUvkkC">GET</a></div></div>
+    <div class="app-card"><div class="card-glass"><div class="app-title">ESign</div><div class="app-meta">NREH ESTATE INFORMATION TECHNOLOGY</div><a class="get-button" href="https://api.khoindvn.io.vn/DoD29p">GET</a></div></div>
+    <div class="app-card"><div class="card-glass"><div class="app-title">ESign</div><div class="app-meta">Eryuan</div><a class="get-button" href="https://api.khoindvn.io.vn/OuUeFv">GET</a></div></div>
+    <div class="app-card"><div class="card-glass"><div class="app-title">ESign</div><div class="app-meta">EEO Education</div><a class="get-button" href="https://api.khoindvn.io.vn/kKZQf7">GET</a></div></div>
+    <div class="app-card"><div class="card-glass"><div class="app-title">ESign</div><div class="app-meta">TCL household Appliance Marketing</div><a class="get-button" href="https://api.khoindvn.io.vn/khDDZF">GET</a></div></div>
+    <div class="app-card"><div class="card-glass"><div class="app-title">ESign</div><div class="app-meta">Wuiling Power Corp</div><a class="get-button" href="https://api.khoindvn.io.vn/jA06Dp">GET</a></div></div>
+    <div class="app-card"><div class="card-glass"><div class="app-title">ESign</div><div class="app-meta">HDFC Bank Limited</div><a class="get-button" href="https://api.khoindvn.io.vn/1ZJIPP">GET</a></div></div>
+
+  </div>
+
+  <footer>Website Made By TP67</footer>
+</body>
+</html>
